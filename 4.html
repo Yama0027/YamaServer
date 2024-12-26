@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アウトカウント表</title>
+    <link rel="icon" href="files/favicon.ico">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #DCC2FF;
+            margin: 20px;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #2fb3c5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #8f8f8f;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #2fb3c5;
+            color: white;
+        }
+        .bar-container {
+            width: 100%;
+            height: 40px;
+            background-color: #d3d3d3;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar {
+            height: 100%;
+            background-color: #67cdcf;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .bar-cell {
+            background: linear-gradient(to right, #55C500 0%, #55C500 25%, green 25%, green 55%, yellow 55%, yellow 95%, red 95%, red 100%);
+        }
+        .percentage {
+            position: absolute;
+            left: 50%; /* バーの全体幅の中央 */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #000;
+        }
+        .th1{
+            width: 20%;
+        }
+        .th2{
+            width: 10%;
+        }
+        .th3{
+            width: 10%;
+        }
+        .th4 {
+            width: 60%;
+        }
+        nav {
+            background-color: #2fb3c5;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+        nav a:hover {
+            background-color: #298c99;
+        }
+        nav a i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i>やま鯖!ホーム</a>
+        <a href="2.html"><i class="fa-solid fa-door-open"></i>参加方法</a>
+        <a href="3.html"><i class="fas fa-gavel"></i>ルール</a>
+        <a href="4.html"><i class="fa-solid fa-ban"></i>違反</a>
+        <a href="5.html"><i class="fa-solid fa-phone"></i>通報</a>
+    </nav>
+
+<h2>違反カウント表</h2>
+<table>
+    <thead>
+        <tr>
+            <th class="th1">ユーザー名</th>
+            <th class="th2">処罰</th>
+            <th class="th3">カウント</th>
+            <th class="th4">カウンターバー</th>
+        </tr>
+    </thead>
+    <tbody id="countTable"></tbody>
+</table>
+
+<script>
+    const punishments = ["", "注意", "注意", "警告", "警告", "警告", "キック", "キック", "キック", "キック", "BAN"];
+
+    fetch('../files/out.json')
+        .then(response => response.json())
+        .then(data => createTable(data))
+        .catch(error => console.error('Error:', error));
+
+        function createTable(data) {
+            const table = document.getElementById("countTable");
+
+            for (const [username, count] of Object.entries(data)) {
+                const row = document.createElement("tr");
+
+                // Username
+                const userCell = document.createElement("td");
+                userCell.innerText = username;
+                row.appendChild(userCell);
+
+                // Punishment
+                const punishmentCell = document.createElement("td");
+                punishmentCell.innerText = punishments[count];
+                row.appendChild(punishmentCell);
+
+                // Count
+                const countCell = document.createElement("td");
+                countCell.innerText = count;
+                row.appendChild(countCell);
+
+                // Bar with left-to-right fill
+                const barCell = document.createElement("td");
+                const barContainer = document.createElement("div");
+                barContainer.className = "bar-container";
+                barCell.className = "bar-cell";
+
+                const bar = document.createElement("div");
+                bar.className = "bar";
+                const percentValue = Math.round((count / 10) * 100);
+                bar.style.width = `${percentValue}%`;
+
+                const percentage = document.createElement("span");
+                percentage.className = "percentage";
+                percentage.innerText = `${percentValue}%`;
+
+                barContainer.appendChild(bar);
+                barContainer.appendChild(percentage);
+                barCell.appendChild(barContainer);
+                row.appendChild(barCell);
+
+                // Set row background color to pink if punishment is BAN
+                if (punishments[count] === "BAN") {
+                    row.style.backgroundColor = "#ffcccc";
+                }
+                if (punishments[count] === "キック") {
+                    row.style.backgroundColor = "#ffffa6";
+                }
+                if (punishments[count] === "警告") {
+                    row.style.backgroundColor = "#67ab5b";
+                }
+                if (punishments[count] === "注意") {
+                    row.style.backgroundColor = "#9ded8e";
+                }
+
+                table.appendChild(row);
+            }
+        }
+
+</script>
+
+</body>
+</html>
