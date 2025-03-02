@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サーバー状況</title>
+    <link rel="icon" href="../files/favicon.ico">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d2f7fc;
+            color: #333;
+
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #status {
+            margin: 20px 0;
+        }
+
+        #server-status {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .status-online {
+            background-color: #4caf50; /* 緑色 */
+            color: white;
+        }
+
+        .status-offline {
+            background-color: #f44336; /* 赤色 */
+            color: white;
+        }
+
+        footer {
+            margin-top: 30px;
+        }
+        nav {
+            background-color: #2fb3c5;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            position: relative;
+        }
+        nav a:hover {
+            background-color: #298c99;
+        }
+        nav a i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i>やま鯖!ホーム</a>
+        <a href="participation.html"><i class="fa-solid fa-door-open"></i>参加方法</a>
+        <a href="rule.html"><i class="fas fa-gavel"></i>ルール</a>
+        <a href="out.html"><i class="fa-solid fa-ban"></i>違反</a>
+        <a href="report.html"><i class="fa-solid fa-phone"></i>通報</a>
+    </nav>
+    <div class="container">
+        <h1>やま鯖！状況</h1>
+        <div id="status">
+          <a href="http://nyatla.jp/ws/mcsapi/mcsapi.php?cmd=si&s=yama0027.f5.si&p=25565"><i class="fas fa-home"></i>やま鯖の状態</a>
+</body>
+</html>

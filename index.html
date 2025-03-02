@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>やま鯖！ホーム</title>
+    <link rel="icon" href="files/favicon.ico">
+    <meta name="description" content="マインクラフトやま鯖！のホームページです。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #DCC2FF;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2fb3c5;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .link-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            background-color: #2fb3c5;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+        }
+        .link-button:hover {
+            background-color: #298c99;
+        }
+        .link-button i {
+            font-size: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease; /* アイコンのアニメーション設定 */
+        }
+        .link-button:hover i {
+            transform: scale(1.1); /* ホバー時にアイコンを1.1倍に拡大 */
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            margin-top: 40px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>やま鯖！ホーム</h1>
+<div class="content">
+    <h2>ようこそ！</h2>
+    <p>このページでは、やま鯖！に関するルールや情報を確認できます。</p>
+    <img src="YamaServer.png" alt="がぞう">
+</div>
+
+<div class="button-container">
+    <a href="2.html" class="link-button"><i class="fa-solid fa-door-open"></i>参加方法</a>
+    <a href="3.html" class="link-button"><i class="fas fa-gavel"></i>ルール</a>
+    <a href="4.html" class="link-button"><i class="fa-solid fa-ban"></i>違反</a>
+    <a href="5.html" class="link-button"><i class="fa-solid fa-phone"></i>通報</a>
+    <a href="6.html" class="link-button"><i class="fa-solid fa-bell"></i>お知らせ</a>
+    <a href="7.html" class="link-button"><i class="fa-solid fa-door-open"></i>サーバー状況</a>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 やま鯖！</p>
+</footer>
+
+</body>
+</html>
